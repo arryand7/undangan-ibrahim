@@ -12,7 +12,7 @@
                 </div>
                 <h3 class="couple-name">Ibrahim Hasan Mauludi</h3>
                 <p class="couple-info">Putra dari</p>
-                <p class="couple-parents">Bapak ... & Ibu ...</p>
+                <p class="couple-parents">Bapak Drs. Eko Purwono & Ibu Winarni Luciana </p>
             </div>
 
             {{-- Ampersand --}}
@@ -25,9 +25,9 @@
                 <div class="couple-photo-wrapper">
                     <img src="{{ asset('images/dewi.webp') }}" alt="Dewi" loading="lazy">
                 </div>
-                <h3 class="couple-name">Dewi</h3>
+                <h3 class="couple-name">Dewi Sri Mulyani</h3>
                 <p class="couple-info">Putri dari</p>
-                <p class="couple-parents">Bapak ... & Ibu ...</p>
+                <p class="couple-parents">Bapak (Alm) Acep Saripudin & Ibu Rohanah</p>
             </div>
         </div>
     </div>
