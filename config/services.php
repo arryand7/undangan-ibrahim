@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'github' => [
+        'webhook_secret' => env('GITHUB_WEBHOOK_SECRET'),
+        'repository' => env('GITHUB_WEBHOOK_REPOSITORY', 'arryand7/undangan-ibrahim'),
+        'deploy_branch' => env('GITHUB_WEBHOOK_BRANCH', 'main'),
+        'deploy_script' => env('GITHUB_DEPLOY_SCRIPT', '/var/www/ibrahim.sabira-iibs.id/ops/deploy.sh'),
+    ],
+
 ];
