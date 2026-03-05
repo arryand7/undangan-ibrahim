@@ -1,6 +1,7 @@
 /**
  * App.js — Main Application Logic
  * Scroll animations, countdown, music, clipboard copy, toast.
+ * Tema Hijau Sage
  */
 
 (function () {
@@ -11,64 +12,99 @@
     // ============================================
     var preloader = document.getElementById('preloader');
     if (preloader) {
-        document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('load', function () {
             setTimeout(function () {
-                preloader.classList.add('preloader-hide');
+                preloader.classList.add('hidden');
                 document.body.classList.remove('preloading');
-                setTimeout(function () {
-                    if (preloader && preloader.parentNode) {
-                        preloader.parentNode.removeChild(preloader);
-                    }
-                }, 700);
             }, 1500);
         });
-    } else {
-        document.body.classList.remove('preloading');
     }
 
     // ============================================
-    // 1. "BUKA UNDANGAN" — Hero Dismiss
+    // 1. OPEN INVITATION (Cover → Main Content)
     // ============================================
     var openBtn = document.getElementById('openInvitation');
-    var hero = document.getElementById('hero');
+    var cover = document.getElementById('cover');
     var mainContent = document.getElementById('mainContent');
     var bgMusic = document.getElementById('bgMusic');
+    var bottomNav = document.getElementById('bottomNav');
+    var invitationOpened = false;
     var isMusicPlaying = false;
 
-    if (openBtn) {
-        openBtn.addEventListener('click', function () {
-            // Fade out hero
-            if (hero) {
-                hero.classList.add('hero-exit');
+    function snapToTopOfInvitation() {
+        var opening = document.getElementById('opening');
+        if (opening) {
+            opening.scrollIntoView({ behavior: 'auto', block: 'start' });
+        } else {
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
+
+        // Extra safety for mobile browsers with quirky scroll restoration.
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    }
+
+    function openInvitationFlow() {
+        if (invitationOpened) return;
+        invitationOpened = true;
+
+        // Fade out cover
+        if (cover) {
+            cover.classList.add('cover-exit');
+        }
+
+        // Show main content
+        if (mainContent) {
+            mainContent.style.display = 'block';
+            requestAnimationFrame(function () {
+                mainContent.classList.add('visible');
+            });
+        }
+
+        snapToTopOfInvitation();
+
+        // Show bottom nav
+        if (bottomNav) {
+            bottomNav.style.display = 'flex';
+        }
+
+        // Auto-play music
+        playMusic();
+
+        // Initialize AOS after content becomes visible
+        setTimeout(function () {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out',
+                    once: true,
+                    offset: 50
+                });
             }
+            refreshInViewAnimations();
+        }, 300);
 
-            // Show main content
+        // Remove cover after animation
+        setTimeout(function () {
+            if (cover) {
+                cover.style.display = 'none';
+            }
+            snapToTopOfInvitation();
+            refreshInViewAnimations();
+        }, 800);
+    }
+
+    if (openBtn) {
+        openBtn.addEventListener('click', openInvitationFlow);
+    }
+
+    var autopenEnabled = new URLSearchParams(window.location.search).get('autopen') === '1';
+    if (autopenEnabled) {
+        window.addEventListener('load', function () {
+            // Wait for preloader sequence before entering content
             setTimeout(function () {
-                if (mainContent) {
-                    mainContent.classList.add('visible');
-                }
-
-                // Hide hero completely after animation
-                setTimeout(function () {
-                    if (hero) {
-                        hero.style.display = 'none';
-                    }
-                }, 500);
-
-                // Start music
-                playMusic();
-
-                // Trigger scroll animations for visible elements
-                setTimeout(initScrollAnimations, 200);
-
-                // Auto-scroll to the next section
-                var firstSection = document.getElementById('couple');
-                if (firstSection) {
-                    setTimeout(function () {
-                        firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 300);
-                }
-            }, 600);
+                openInvitationFlow();
+            }, 1700);
         });
     }
 
@@ -81,14 +117,13 @@
 
     function playMusic() {
         if (bgMusic && !isMusicPlaying) {
-            bgMusic.volume = 0.3;
             var playPromise = bgMusic.play();
             if (playPromise !== undefined) {
                 playPromise.then(function () {
                     isMusicPlaying = true;
                     updateMusicIcon();
                 }).catch(function () {
-                    // Autoplay blocked — that's okay
+                    // Autoplay blocked — user will toggle manually
                     isMusicPlaying = false;
                     updateMusicIcon();
                 });
@@ -104,20 +139,19 @@
         } else {
             bgMusic.play().then(function () {
                 isMusicPlaying = true;
-            }).catch(function () { });
+            }).catch(function () {});
         }
         updateMusicIcon();
     }
 
     function updateMusicIcon() {
-        if (musicIconOn && musicIconOff) {
-            if (isMusicPlaying) {
-                musicIconOn.classList.remove('hidden');
-                musicIconOff.classList.add('hidden');
-            } else {
-                musicIconOn.classList.add('hidden');
-                musicIconOff.classList.remove('hidden');
-            }
+        if (!musicIconOn || !musicIconOff) return;
+        if (isMusicPlaying) {
+            musicIconOn.classList.remove('hidden');
+            musicIconOff.classList.add('hidden');
+        } else {
+            musicIconOn.classList.add('hidden');
+            musicIconOff.classList.remove('hidden');
         }
     }
 
@@ -128,33 +162,62 @@
     // ============================================
     // 3. SCROLL ANIMATIONS (IntersectionObserver)
     // ============================================
-    function initScrollAnimations() {
-        if (!('IntersectionObserver' in window)) {
-            // Fallback: show all immediately
-            document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
-                el.classList.add('visible');
-            });
-            return;
-        }
+    function isInViewport(el) {
+        if (!el) return false;
+        var rect = el.getBoundingClientRect();
+        var viewportH = window.innerHeight || document.documentElement.clientHeight;
+        var visibleTop = Math.max(rect.top, 0);
+        var visibleBottom = Math.min(rect.bottom, viewportH);
+        var visibleHeight = visibleBottom - visibleTop;
+        if (visibleHeight <= 0) return false;
+        var minVisible = Math.min(Math.max(rect.height * 0.12, 24), 120);
+        return visibleHeight >= minVisible;
+    }
 
-        var observer = new IntersectionObserver(
-            function (entries) {
+    function revealAosInViewport() {
+        var aosItems = document.querySelectorAll('[data-aos]');
+        aosItems.forEach(function (el) {
+            if (isInViewport(el)) {
+                el.classList.add('aos-animate');
+            }
+        });
+    }
+
+    function refreshInViewAnimations() {
+        if (typeof AOS !== 'undefined') {
+            AOS.refreshHard();
+        }
+        revealAosInViewport();
+        initScrollAnimations();
+    }
+
+    function initScrollAnimations() {
+        var elements = document.querySelectorAll('.animate-on-scroll');
+        if (!elements.length) return;
+
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
                 });
-            },
-            {
-                threshold: 0.15,
-                rootMargin: '0px 0px -40px 0px',
-            }
-        );
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(function (el) {
-            observer.observe(el);
-        });
+            elements.forEach(function (el) {
+                if (el.classList.contains('visible') || isInViewport(el)) {
+                    el.classList.add('visible');
+                    return;
+                }
+                observer.observe(el);
+            });
+        } else {
+            // Fallback for old browsers
+            elements.forEach(function (el) {
+                el.classList.add('visible');
+            });
+        }
     }
 
     // ============================================
@@ -164,10 +227,14 @@
     var countHours = document.getElementById('countHours');
     var countMinutes = document.getElementById('countMinutes');
     var countSeconds = document.getElementById('countSeconds');
-    var countdownTimer = document.getElementById('countdownTimer');
+    var openingDays = document.querySelectorAll('.opening-intro-countdown [data-count-unit="days"]');
+    var openingHours = document.querySelectorAll('.opening-intro-countdown [data-count-unit="hours"]');
+    var openingMinutes = document.querySelectorAll('.opening-intro-countdown [data-count-unit="minutes"]');
+    var openingSeconds = document.querySelectorAll('.opening-intro-countdown [data-count-unit="seconds"]');
+    var coverCountdown = document.getElementById('coverCountdown');
 
     // Target: 26 March 2026 07:00 WIB (UTC+7)
-    var targetAttr = countdownTimer ? countdownTimer.getAttribute('data-target') : null;
+    var targetAttr = coverCountdown ? coverCountdown.getAttribute('data-target') : null;
     var TARGET_DATE = targetAttr ? new Date(targetAttr) : new Date('2026-03-26T07:00:00+07:00');
 
     function updateCountdown() {
@@ -179,6 +246,10 @@
             setCountdownValue(countHours, '00');
             setCountdownValue(countMinutes, '00');
             setCountdownValue(countSeconds, '00');
+            setCountdownGroupValue(openingDays, '00');
+            setCountdownGroupValue(openingHours, '00');
+            setCountdownGroupValue(openingMinutes, '00');
+            setCountdownGroupValue(openingSeconds, '00');
             return;
         }
 
@@ -191,6 +262,10 @@
         setCountdownValue(countHours, padZero(hours));
         setCountdownValue(countMinutes, padZero(minutes));
         setCountdownValue(countSeconds, padZero(seconds));
+        setCountdownGroupValue(openingDays, padZero(days));
+        setCountdownGroupValue(openingHours, padZero(hours));
+        setCountdownGroupValue(openingMinutes, padZero(minutes));
+        setCountdownGroupValue(openingSeconds, padZero(seconds));
 
         requestAnimationFrame(function () {
             setTimeout(updateCountdown, 1000);
@@ -199,17 +274,25 @@
 
     function setCountdownValue(el, value) {
         if (!el) return;
-        if (el.textContent !== value) {
+        var current = el.textContent;
+        if (current !== value) {
             el.textContent = value;
-            el.classList.remove('flip');
-            // Trigger reflow
-            void el.offsetWidth;
-            el.classList.add('flip');
+            el.style.transform = 'scale(1.15)';
+            setTimeout(function () {
+                el.style.transform = 'scale(1)';
+            }, 200);
         }
     }
 
+    function setCountdownGroupValue(elements, value) {
+        if (!elements || !elements.length) return;
+        elements.forEach(function (el) {
+            setCountdownValue(el, value);
+        });
+    }
+
     function padZero(num) {
-        return num < 10 ? '0' + num : String(num);
+        return num < 10 ? '0' + num : '' + num;
     }
 
     // Start countdown
@@ -231,34 +314,32 @@
     };
 
     function fallbackCopy(text, button) {
-        var ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
         try {
             document.execCommand('copy');
             onCopySuccess(button);
         } catch (e) {
             showToast('Gagal menyalin', 'error');
         }
-        document.body.removeChild(ta);
+        document.body.removeChild(textarea);
     }
 
     function onCopySuccess(button) {
-        showToast('Nomor rekening disalin!');
+        showToast('Berhasil disalin!', 'success');
         if (button) {
             button.classList.add('copied');
-            var span = button.querySelector('span');
-            if (span) {
-                var original = span.textContent;
-                span.textContent = 'Disalin!';
-                setTimeout(function () {
-                    button.classList.remove('copied');
-                    span.textContent = original;
-                }, 2000);
-            }
+            var originalSpan = button.querySelector('span');
+            var originalText = originalSpan ? originalSpan.textContent : '';
+            if (originalSpan) originalSpan.textContent = 'Tersalin!';
+            setTimeout(function () {
+                button.classList.remove('copied');
+                if (originalSpan) originalSpan.textContent = originalText;
+            }, 2000);
         }
     }
 
@@ -268,13 +349,12 @@
     window.showToast = function (message, type) {
         var toast = document.getElementById('toast');
         if (!toast) return;
-
         toast.textContent = message;
-        toast.style.borderColor = type === 'error' ? '#f87171' : '#c9a96e';
-        toast.classList.add('show');
+        toast.className = 'toast visible';
+        if (type) toast.classList.add(type);
 
         setTimeout(function () {
-            toast.classList.remove('show');
+            toast.classList.remove('visible');
         }, 3000);
     };
 

@@ -2,17 +2,32 @@
 
 @section('content')
 
-    {{-- Hero Section (Three.js) --}}
+    {{-- Cover Section --}}
     @include('sections.hero')
 
     {{-- Main Content (hidden until "Buka Undangan") --}}
     <main id="mainContent" class="main-content">
+        @include('sections.opening')
         @include('sections.couple')
         @include('sections.events')
-        @include('sections.countdown')
         @include('sections.gift')
         @include('sections.rsvp')
         @include('sections.guestbook')
+
+        {{-- Closing Section --}}
+        <div class="leaf-separator flip">
+            <img src="{{ asset('images/leaf-3.png') }}" alt="">
+        </div>
+
+        <section class="closing-section" data-aos="zoom-in">
+            <div class="container">
+                <p class="closing-message">
+                    Atas kehadiran saudara/(i) & do'a restunya, kami ucapkan terimakasih
+                </p>
+                <p class="closing-thanks">Hormat Kami</p>
+                <p class="closing-names">Ibrahim & Dewi</p>
+            </div>
+        </section>
 
         {{-- Footer --}}
         <footer class="section footer-section">
