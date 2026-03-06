@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#FCFFF8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Wedding of Ibrahim & Dewi</title>
+    <title>Wedding of Dewi & Ibrahim</title>
 
     {{-- Google Fonts: Montserrat + Dancing Script --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     {{-- Preloader --}}
     <div id="preloader" class="preloader" aria-hidden="true">
         <div class="preloader-inner">
-            <span class="preloader-title">Ibrahim & Dewi</span>
+            <span class="preloader-title">Dewi & Ibrahim</span>
             <span class="preloader-sub">Wedding Invitation</span>
         </div>
     </div>

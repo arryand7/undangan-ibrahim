@@ -23,19 +23,6 @@
         <p class="couple-opening animate-on-scroll">Kami mohon do'a & restunya atas pernikahan kami</p>
 
         <div class="couple-card-container">
-            {{-- Groom --}}
-            <div data-aos="fade-up">
-                <div class="couple-photo-wrapper">
-                    <img src="{{ asset('images/ibrahim-portrait.jpeg') }}" alt="Ibrahim Hasan Mauludi" class="couple-photo" loading="lazy">
-                </div>
-                <h3 class="couple-name">Ibrahim Hasan Mauludi</h3>
-                <p class="couple-info">Putra dari</p>
-                <p class="couple-parents">Bapak Drs. Eko Purwono & Ibu Winarni Luciana</p>
-            </div>
-
-            {{-- Ampersand --}}
-            <div class="couple-amp" data-aos="fade-up">&</div>
-
             {{-- Bride --}}
             <div data-aos="fade-up">
                 <div class="couple-photo-wrapper">
@@ -44,6 +31,19 @@
                 <h3 class="couple-name">Dewi Sri Mulyani</h3>
                 <p class="couple-info">Putri dari</p>
                 <p class="couple-parents">Bapak (Alm) Acep Saripudin & Ibu Rohanah</p>
+            </div>
+
+            {{-- Ampersand --}}
+            <div class="couple-amp" data-aos="fade-up">&</div>
+
+            {{-- Groom --}}
+            <div data-aos="fade-up">
+                <div class="couple-photo-wrapper">
+                    <img src="{{ asset('images/ibrahim-portrait.jpeg') }}" alt="Ibrahim Hasan Mauludi" class="couple-photo" loading="lazy">
+                </div>
+                <h3 class="couple-name">Ibrahim Hasan Mauludi</h3>
+                <p class="couple-info">Putra dari</p>
+                <p class="couple-parents">Bapak Drs. Eko Purwono & Ibu Winarni Luciana</p>
             </div>
         </div>
     </div>

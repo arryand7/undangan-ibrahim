@@ -32,7 +32,10 @@
             <p class="gift-address-title">Kirim Kado Ke Alamat</p>
             <p class="gift-address-desc">Anda juga dapat mengirimkan melalui alamat berikut</p>
             <div class="gift-address-box">
-                <span>Terungkulon RT 003 RW 001, Ds. Terungkulon, Kec. Krian, Kab. Sidoarjo, Jawa Timur</span>
+                <ul class="gift-address-list" align="left">
+                    <li>Rumah Dewi : Kp. Selauni RT 013 RW 004, Ds. Kertamandala, Kec. Panjalu, Kab. Ciamis, Jawa Barat</li>
+                    <li>Rumah Ibrahim : Terungkulon RT 003 RW 001, Ds. Terungkulon, Kec. Krian, Kab. Sidoarjo, Jawa Timur</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -69,6 +72,41 @@
                     </svg>
                 </button>
                 <div class="bank-accordion-body" id="briDetail">
+                    <div class="bank-detail-card">
+                        <div class="bank-detail-logo-wrap">
+                            <img src="{{ asset('images/bri.svg') }}" alt="Logo BRI" class="bank-detail-logo">
+                        </div>
+                        <p class="bank-label-title">Bank BRI</p>
+                        <p class="bank-label">Nama Rekening</p>
+                        <p class="bank-value">DEWI SRI MULYANI</p>
+                        <p class="bank-label">Nomor Rekening</p>
+                        <p class="bank-value bank-number">
+                            <span id="briAccountNum">135401019188500</span>
+                            <button class="btn-copy-inline" onclick="copyToClipboard('135401019188500', this)" aria-label="Copy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- BRI Accordion --}}
+            <div class="bank-accordion">
+                <button type="button" class="bank-accordion-header" data-target="briDetail2">
+                    <span class="bank-header-left">
+                        <span class="bank-logo-pill">
+                            <img src="{{ asset('images/bri.svg') }}" alt="Logo BRI" class="bank-logo-small">
+                        </span>
+                        <span class="bank-name-text">BRI</span>
+                    </span>
+                    <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <div class="bank-accordion-body" id="briDetail2">
                     <div class="bank-detail-card">
                         <div class="bank-detail-logo-wrap">
                             <img src="{{ asset('images/bri.svg') }}" alt="Logo BRI" class="bank-detail-logo">
@@ -129,7 +167,10 @@
             <div class="modal-address-area">
                 <h4 class="modal-subtitle" style="margin-top: 24px;">Kirim Kado Ke Alamat</h4>
                 <p class="modal-subdesc">Anda juga dapat mengirimkan melalui alamat berikut</p>
-                <p class="modal-address-text">Terungkulon RT 003 RW 001, Ds. Terungkulon, Kec. Krian, Kab. Sidoarjo, Jawa Timur</p>
+                <ul style="text-align: left; margin-left: 10px;">
+                    <li>Rumah Dewi : Kp. Selauni RT 013 RW 004, Ds. Kertamandala, Kec. Panjalu, Kab. Ciamis, Jawa Barat</li>
+                    <li>Rumah Ibrahim : Terungkulon RT 003 RW 001, Ds. Terungkulon, Kec. Krian, Kab. Sidoarjo, Jawa Timur</li>
+                </ul>
             </div>
 
             <div class="modal-footer-actions">

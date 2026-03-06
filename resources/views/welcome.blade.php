@@ -25,14 +25,14 @@
                     Atas kehadiran saudara/(i) & do'a restunya, kami ucapkan terimakasih
                 </p>
                 <p class="closing-thanks">Hormat Kami</p>
-                <p class="closing-names">Ibrahim & Dewi</p>
+                <p class="closing-names">Dewi & Ibrahim</p>
             </div>
         </section>
 
         {{-- Footer --}}
         <footer class="section footer-section">
             <div class="container">
-                <p class="footer-text">Made with ❤️ for Ibrahim & Dewi</p>
+                <p class="footer-text">Made with ❤️ for Dewi & Ibrahim</p>
                 <p class="footer-sub">26 Maret 2026</p>
             </div>
         </footer>

@@ -20,9 +20,9 @@
             <div class="cover-info">
                 <p class="cover-label fade-in delay-2">Undangan Pernikahan</p>
                 <div class="cover-names fade-in delay-2">
-                    <span class="name">Ibrahim</span>
-                    <span class="name">&</span>
                     <span class="name">Dewi</span>
+                    <span class="name">&</span>
+                    <span class="name">Ibrahim</span>
                 </div>
 
                 <div class="cover-date fade-in delay-3">

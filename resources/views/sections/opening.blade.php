@@ -6,13 +6,12 @@
 
             <div class="opening-intro-photo-wrap">
                 <img src="{{ asset('images/opening-couple.jpeg') }}" alt="Ibrahim & Dewi" class="opening-intro-photo" loading="lazy">
-                <img src="{{ asset('images/leaf-3.png') }}" alt="" class="opening-intro-leaf">
             </div>
 
             <div class="opening-intro-names">
-                <span>Ibrahim</span>
-                <span>&</span>
                 <span>Dewi</span>
+                <span>&</span>
+                <span>Ibrahim</span>
             </div>
 
             <p class="opening-intro-date">

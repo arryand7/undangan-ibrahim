@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Family admin account for attendance feature
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Keluarga Ibrahim',
+            'email' => 'admin@ibrahim.sabira-iibs.id',
+            'password' => bcrypt('Ibrahim2026!'),
         ]);
     }
 }

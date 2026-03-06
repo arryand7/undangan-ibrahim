@@ -23,16 +23,22 @@
                 &nbsp;|&nbsp;
                 <span class="event-time">07:00 - Selesai WIB</span>
             </div>
-            <p class="event-location">Ciamis, Jawa Barat</p>
+            <p class="event-location">(Rumah Mempelai Wanita)</p>
             <p class="event-address">Kp. Selauni RT 013 RW 004, Ds. Kertamandala, Kec. Panjalu, Kab. Ciamis, Jawa Barat</p>
-            <a href="https://www.google.com/calendar/event?action=TEMPLATE&text=Pernikahan+Ibrahim+%26+Dewi&details=Akad+%26+Resepsi&dates=20260326T000000Z/20260326T100000Z&location=Ciamis+Jawa+Barat" target="_blank" class="btn-calendar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+            <a href="https://maps.app.goo.gl/bmfTDoDGDM1ns6Hu8" target="_blank" class="btn-calendar">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs>
+                        <path class="a" d="M23.5225,5.5H7.5a2,2,0,0,0-2,2v33a2,2,0,0,0,2,2h33a2,2,0,0,0,2-2V7.5a2,2,0,0,0-2-2H35.5519"></path>
+                        <path class="a" d="M29.5377,3.3671a9.5544,9.5544,0,0,0-9.5542,9.5544c0,7.4771,7.3137,16.49,9.2073,18.6986a.5772.5772,0,0,0,.8815-.0044c1.8615-2.2158,9.02-11.222,9.02-18.6942A9.5543,9.5543,0,0,0,29.5377,3.3671Zm0,13.1251a3.5708,3.5708,0,1,1,3.5708-3.5707A3.5708,3.5708,0,0,1,29.5377,16.4922Z"></path>
+                        <line class="a" x1="34.7901" y1="25.0578" x2="42.5" y2="23.8697"></line>
+                        <line class="a" x1="5.5" y1="29.5717" x2="25.3197" y2="26.5173"></line>
+                        <line class="a" x1="17.908" y1="27.6595" x2="14.1682" y2="5.5"></line>
+                    </g>
                 </svg>
-                Simpan Tanggal
+                Buka Lokasi
             </a>
         </div>
 
@@ -44,16 +50,22 @@
                 &nbsp;|&nbsp;
                 <span class="event-time">10:00 - Selesai WIB</span>
             </div>
-            <p class="event-location">Sidoarjo, Jawa Timur</p>
+            <p class="event-location">(Rumah Mempelai Pria)</p>
             <p class="event-address">Terungkulon RT 003 RW 001, Ds. Terungkulon, Kec. Krian, Kab. Sidoarjo, Jawa Timur</p>
-            <a href="https://www.google.com/calendar/event?action=TEMPLATE&text=Tasyakur+Ibrahim+%26+Dewi&details=Tasyakur&dates=20260329T030000Z/20260329T100000Z&location=Sidoarjo+Jawa+Timur" target="_blank" class="btn-calendar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
+            <a href="https://goo.gl/maps/nUQtZAv4k7SunPzU6" target="_blank" class="btn-calendar">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs>
+                        <path class="a" d="M23.5225,5.5H7.5a2,2,0,0,0-2,2v33a2,2,0,0,0,2,2h33a2,2,0,0,0,2-2V7.5a2,2,0,0,0-2-2H35.5519"></path>
+                        <path class="a" d="M29.5377,3.3671a9.5544,9.5544,0,0,0-9.5542,9.5544c0,7.4771,7.3137,16.49,9.2073,18.6986a.5772.5772,0,0,0,.8815-.0044c1.8615-2.2158,9.02-11.222,9.02-18.6942A9.5543,9.5543,0,0,0,29.5377,3.3671Zm0,13.1251a3.5708,3.5708,0,1,1,3.5708-3.5707A3.5708,3.5708,0,0,1,29.5377,16.4922Z"></path>
+                        <line class="a" x1="34.7901" y1="25.0578" x2="42.5" y2="23.8697"></line>
+                        <line class="a" x1="5.5" y1="29.5717" x2="25.3197" y2="26.5173"></line>
+                        <line class="a" x1="17.908" y1="27.6595" x2="14.1682" y2="5.5"></line>
+                    </g>
                 </svg>
-                Simpan Tanggal
+                Buka Lokasi
             </a>
         </div>
     </div>
