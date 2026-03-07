@@ -7,6 +7,15 @@
     <meta name="theme-color" content="#FCFFF8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- Open Graph Meta Tags --}}
+    <meta property="og:title" content="Dewi & Ibrahim | Undangan Berbasis Web | ibrahim.sabira-iibs.id">
+    <meta property="og:description" content="Undangan untuk anda. Silahkan klik link ini untuk membuka detail undangan. Dewi & Ibrahim">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('images/cover.png') }}">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+
     <title>Wedding of Dewi & Ibrahim</title>
 
     {{-- Google Fonts: Montserrat + Dancing Script --}}
